@@ -101,68 +101,7 @@ public class ConsumerController
         }    }
 	
 
-	@PostMapping("/sendotp")
-	public ModelAndView sendOtp(@RequestParam("email") String email, HttpSession session) {
-	    ModelAndView mv = new ModelAndView();
-	    String mobile = CM.findmobile(email);
-	    String otp = generateOtp();
-	    session.setAttribute("otp", otp);
-	    session.setAttribute("email", email);  // Store email in session
-	    
-	    try {
-	        sendEmail(email, otp);  // Send OTP email
-	        mv.setViewName("forgot-password");  // Stay on the OTP verification page
-	    } catch (MessagingException e) {
-	        mv.addObject("error", "Failed to send OTP, please try again.");
-	        mv.setViewName("forgot-password");  // Stay on the OTP page if email fails
-	    }
-	    
-	    return mv;
-	}
 
-	@PostMapping("/verifyotp")
-	public ModelAndView verifyOtp(@RequestParam("otp") String otp, 
-	                              @RequestParam("newPassword") String newPassword, 
-	                              HttpSession session) {
-	    ModelAndView mv = new ModelAndView();
-	    
-	    String sessionOtp = (String) session.getAttribute("otp");
-	    String email = (String) session.getAttribute("email");
-	    
-	    if (sessionOtp != null && sessionOtp.equals(otp)) {
-	        String result = CM.resetPass(email, newPassword);
-	        
-	        if ("success".equals(result)) {
-	            session.removeAttribute("otp");
-	            session.removeAttribute("email");
-	            
-	            mv.setViewName("login");
-	        } else {
-	            mv.addObject("error", "Failed to reset password. Please try again.");
-	            mv.setViewName("forgot-password");
-	        }
-	    } else {
-	        mv.addObject("error", "Invalid OTP. Please try again.");
-	        mv.setViewName("forgot-password");
-	    }
-	    
-	    return mv;
-	}
-
-//For OTP generation
-	
-    private String generateOtp() {
-        return String.valueOf(10000 + new SecureRandom().nextInt(90000)); 
-    }
-
-    private void sendEmail(String to, String otp) throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setTo(to);
-        helper.setSubject("Your OTP for Forgot Password");
-        helper.setText("Your OTP is: " + otp);
-        mailSender.send(message);
-    }
 
 	
 	@PostMapping("/login")
