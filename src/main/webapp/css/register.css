@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body {
+    background: url('https://images.unsplash.com/photo-1499426600726-a950358acf16?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.registerWindow {
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Adds a nice blur effect */
+}
+
+.registerHeader {
+    text-align: center;
+    font-size: 1.8em; /* Increased font size */
+    color: #333;
+    font-weight: 500; /* Slightly bolder */
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    border: 1px solid #ccc; /* Lighter border */
+    width: calc(100% - 20px);
+    height: 25px; /* Slightly taller */
+/*     border-radius: 25px; More rounded corners
+ */    font-size: 14pt; /* Larger font size */
+    padding: 5px; /* Padding for better spacing */
+    transition: border-color 0.3s; /* Smooth transition */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
+    border-color: #007bff; /* Change border color on focus */
+}
+
+input[type="date"],
+select {
+    border: 1px solid #ccc;
+    width: calc(100% - 20px);
+    height: 35px;
+/*     border-radius: 25px;
+ */    padding: 5px;
+}
+
+.input-half {
+    width: calc(50% - 10px);
+}
+
+input[type="submit"] {
+    border: none; /* No border */
+    background-color: #007bff; /* Primary color */
+    color: white; /* White text */
+    width: calc(100% - 20px);
+    height: 40px; /* Taller button */
+    cursor: pointer;
+/*     border-radius: 25px; More rounded corners
+ */    font-size: 14pt; /* Larger font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.error-card {
+    border: 1px solid red;
+    background-color: rgba(248, 215, 218, 0.9); /* Slightly transparent */
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* More padding */
+    background-color: rgba(89, 134, 199, 0.9); /* Slightly transparent */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.main-header .logo h1 {
+    margin-left: 20px;
+    font-size: 17px; /* Increased font size */
+}
+
+.nav-links a {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s; /* Smooth transition */
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Change color on hover */
+}
+
+
+/* Container styling */
+form {
+    font-family: Arial, sans-serif;
+}
+
+
+#gender,#urole,#artPreference,#newsletter {
+    width: 100%;
+    max-width: 490px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove default styling for select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23666" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+
+
+form select, form label, form br {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,143 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('/arts/changepassword.png') no-repeat left top fixed;  /* Start image from the left edge */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;  
+}
+
+.change-password-form {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;  /* Position the form absolutely within the body */
+    top: 40%;  /* Adjust the form's position from the top (20% from the top of the body) */
+    left: 60%;  /* Center the form horizontally */
+}
+
+
+.change-password-form:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.change-password-form h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.change-password-form label {
+    display: block;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.change-password-form input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+}
+
+.change-password-form input[type="password"]:focus {
+    border-color: #7e57c2;
+    box-shadow: 0 0 6px rgba(126, 87, 194, 0.4);
+    outline: none;
+}
+
+.change-password-form button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #7e57c2, #26c6da);
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.change-password-form button:hover {
+    background: linear-gradient(to right, #26c6da, #7e57c2);
+    transform: translateY(-3px);
+}
+
+.change-password-form button:active {
+    transform: translateY(0);
+}
+
+#alertBox {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    padding: 15px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 15px;
+    max-width: 320px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#alertBox.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+#alertMessage {
+    margin-bottom: 8px;
+}
+
+.progress {
+    width: 100%;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 3px;
+    transform-origin: left;
+    animation: progressAnimation 3s linear forwards;
+}
+
+@keyframes progressAnimation {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+
+
+
+
+

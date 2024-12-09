@@ -1,0 +1,91 @@
+ @charset "UTF-8";
+        body {
+            margin: 20px;
+            margin-top:80px;
+            color: #333;
+        }
+        .invoice {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #0073e6; /* Amazon blue color */
+        }
+        .invoice-header p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .invoice-details {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .details-left {
+            flex: 1; /* Allow left side to take available space */
+            margin-right: 20px; /* Space between details and image */
+        }
+        .details-left div {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .art-image {
+            max-width: 200px;
+            height: auto;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+            color: green; /* Color for total amount */
+        }
+        .order-status {
+            color: #0073e6; /* Blue color for order status */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+      .download-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-button button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-button button:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-button button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+        
+        

@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+/* Container layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 60px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid black; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.qr-container {
+    flex: 1;
+    margin-right: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.payment-details {
+    flex: -4;
+}
+
+ul {
+    list-style: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+ul li b {
+    color: #333;
+    margin-right: 15px;
+    width: 150px;
+    font-weight: normal;
+}
+
+ul li img {
+    max-width: 100px; 
+    height: auto;
+    margin-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #2e7d32;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+input[type="hidden"] {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul li img {
+        max-width: 200px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .container img {
+        max-width: 100%;
+    }
+
+    ul {
+        height: auto;
+        max-width: 100%;
+    }
+}

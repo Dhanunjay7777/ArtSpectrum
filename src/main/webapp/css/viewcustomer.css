@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f4f4f4;
+    top:50px;
+    margin: 20px;
+    padding: 40px;
+    position: relative;
+}
+
+.consumer-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.details-table th, .details-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.details-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.details-table td {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+}
+
+.details-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.details-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+    .details-table th, .details-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+
+/* Button styles */
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Update button styles */
+.update-button {
+    background-color: #2196F3;
+}
+
+.update-button:hover {
+    background-color: #1976D2;
+}
+.modal {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: fixed; /* Position fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    z-index: 1000; /* Ensure it appears on top */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button[type="button"] {
+    background-color: #ccc;  /* Cancel button */
+}
+
+.modal-content button[type="submit"] {
+    background-color: #f44336;  /* Confirm delete button */
+    color: white;
+}
+
+/* Add a class to dim the background content */
+.dimmed {
+    opacity: 0.3; /* Reduce the opacity of background content */
+    pointer-events: none; /* Disable interaction with background content */
+}
+.alert {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+/*     background-color: rgb(0, 131, 231); 
+ */   color: darkblue;
+    padding: 15px;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+/*     z-index: 1000;
+ */    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animation */
+    transform: translateY(-20px); /* Slightly move up when shown */
+}
+
+.alert.show {
+    display: block; /* Show when the class is added */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move back to original position */
+}
+
+.progress {
+    width: 100%; /* Full width */
+    height: 4px; /* Hergb(0, 255, 0) */
+    background-color: green; /* Light background for progress */
+    position: absolute;
+    bottom: 0; /* Align to bottom of the alert box */
+    left: 0; /* Align to left */
+    animation: progress-animation 3s linear forwards; /* Animation */
+}
+
+@keyframes progress-animation {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0; /* Animate to zero width */
+    }
+}

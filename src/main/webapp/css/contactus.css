@@ -1,0 +1,180 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  height: 100vh;
+  margin: -20px 0 50px;
+  background-image: url('https://plus.unsplash.com/premium_photo-1666298863696-8e8da5d85f2b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+  
+  background-size: cover; /* Cover the entire body */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat
+}
+
+/* Container Styles */
+.container {
+  background-color: white;
+  top:60px;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  min-width: 370px;
+}
+
+/* Headings */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Form Container */
+.form-container {
+  display: flex;
+}
+
+/* Left Container */
+.left-container {
+  flex: 1;
+  height: 550px;
+  background-color: rgb(89, 134, 199);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Right Container */
+.right-container {
+  display: flex;
+  flex: 1;
+  height: 540px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner Containers */
+.right-inner-container {
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.left-inner-container {
+  height: 50%;
+  width: 80%;
+  text-align: center;
+  line-height: 22px;
+}
+
+/* Input and Textarea Styles */
+input,
+textarea {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  font-size: 0.8rem;
+
+  &:focus {
+    outline: 1px solid teal;
+  }
+
+  &::placeholder {
+    color: #888; 
+  }
+}
+
+/* Button Styles */
+button {
+  border-radius: 20px;
+  border: 1px solid teal;
+  background-color: rgb(89, 134, 199);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in, opacity 0.2s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none; 
+  }
+}
+
+
+
+form p {
+  text-align: left;
+}
+
+
+.nav-links {
+  display: flex; 
+  gap: 20px; 
+}
+
+.nav-links a {
+  text-decoration: none; 
+  color: white; 
+  font-weight: 600; 
+  font-size: 1.1rem; 
+  position: relative;
+  transition: color 0.3s ease; 
+}
+
+.nav-links a:hover {
+  color: white; 
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid #ffd700; 
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px; 
+  }
+
+  .nav-links a {
+    font-size: 1rem; 
+  }
+}
+
+.main-header {
+  display: flex; 
+  position:fixed;
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: rgb(89, 134, 199); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  top:0;
+  width: 100%; 
+}

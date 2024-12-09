@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+.container {
+    max-width: 100%;
+    margin: 40px auto; /* Increased top margin to 40px */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+}
+
+.order-table {
+    margin: 20px 30px; /* Added left and right margin for spacing */
+}
+
+.order-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.order-table th, .order-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.order-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-table tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s ease-in;
+}
+
+.order-table tr td {
+    font-size: 0.9rem;
+}
+
+/* Art image styling */
+.order-table img {
+    max-width: 80px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px;
+    transition: transform 0.2s ease-in;
+}
+
+.order-table img:hover {
+    transform: scale(1.1);
+}
+
+/* Order status coloring */
+.order-table td {
+    font-size: 1rem;
+}
+
+.order-table td[style*="red"] {
+    background-color: #ffe6e6;
+    color: red;
+    font-weight: bold;
+}
+
+.order-table td[style*="green"] {
+    background-color: #e6ffe6;
+    color: green;
+    font-weight: bold;
+}
+
+.order-table td[style*="blue"] {
+    background-color: #e6f2ff;
+    color: blue;
+    font-weight: bold;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .order-table table {
+        font-size: 0.85rem;
+    }
+
+    .order-table img {
+        max-width: 60px;
+    }
+
+    .order-table th, .order-table td {
+        padding: 8px;
+    }
+}
+
+.btn-update {
+    background-color: #0080ff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-update:hover {
+    background-color:blue;
+}
+
