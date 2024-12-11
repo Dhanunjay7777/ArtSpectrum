@@ -271,87 +271,93 @@ public class ConsumerController
 	
 
 
- @PostMapping("/sellartreg")
-	 public String sellartreg(HttpServletRequest request, HttpServletResponse response, @RequestParam("imageurl") MultipartFile imageFile) throws IOException {
-	     Artreg A = new Artreg();
-	     HttpSession session = request.getSession();
+@PostMapping("/sellartreg")
+public String sellartreg(HttpServletRequest request, HttpServletResponse response, @RequestParam("imageurl") MultipartFile imageFile) throws IOException {
+    Artreg A = new Artreg();
+    HttpSession session = request.getSession();
 
-	     Consumer seller = (Consumer) session.getAttribute("cms");
+    Consumer seller = (Consumer) session.getAttribute("cms");
 
-	     Random random = new Random();
-	     int randomDigits = 100000 + random.nextInt(900000);
-	     String artid = "ART" + randomDigits;
+    Random random = new Random();
+    int randomDigits = 100000 + random.nextInt(900000);
+    String artid = "ART" + randomDigits;
 
-	     String sellername = seller.getName();
-	     String sellerid = seller.getUserid().toString();
+    String sellername = seller.getName();
+    String sellerid = seller.getUserid().toString();
 
-	     String arttitle = request.getParameter("arttitle");
-	     String artdescription = request.getParameter("artdescription");
-	     String artmedium = request.getParameter("artmedium");
-	     String artdimensions = request.getParameter("artdimensions");
-	     String artcost = request.getParameter("artcost");
-	     String datelisted = request.getParameter("datelisted");
-	     String availstatus = request.getParameter("availstatus");
+    String arttitle = request.getParameter("arttitle");
+    String artdescription = request.getParameter("artdescription");
+    String artmedium = request.getParameter("artmedium");
+    String artdimensions = request.getParameter("artdimensions");
+    String artcost = request.getParameter("artcost");
+    String datelisted = request.getParameter("datelisted");
+    String availstatus = request.getParameter("availstatus");
 
-	     // S3 Configuration
-	     String bucketName = "myartbucket789"; // Replace with your S3 bucket name
-	     String imageFileName = sellerid + "_image" + randomDigits + ".jpg"; // Unique file name
+    // S3 Configuration
+    String bucketName = "myartbucket789"; // Replace with your S3 bucket name
+    String imageFileName = sellerid + "_image" + randomDigits + ".jpg"; // Unique file name
 
-	     // AWS S3 Client Configuration
-	     Region region = Region.US_EAST_1; // Replace with your S3 region, e.g., Region.US_EAST_1
-	     S3Client s3Client = S3Client.builder()
-	             .region(region)
-	             .credentialsProvider(StaticCredentialsProvider.create(
-	                     AwsBasicCredentials.create("AKIAXYKJQVJPQGXIORUT", "H1iDtQqXKMhFEZgB2yzOlPa69833brpbpb0J9ieB")))
-	             .build();
+    // AWS Credentials from Environment Variables
+    String accessKeyId = System.getenv("AWS_ACCESS_KEY_ID");
+    String secretAccessKey = System.getenv("AWS_SECRET_ACCESS_KEY");
 
-	     // Upload image to S3
-	     try {
-	         // Save the file temporarily to get an InputStream
-	         File tempFile = File.createTempFile("temp", null);
-	         imageFile.transferTo(tempFile);
+    AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 
-	         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-	                 .bucket(bucketName)
-	                 .key(imageFileName)
-	                 .acl("public-read") // Set file to be publicly accessible
-	                 .build();
+    // AWS S3 Client Configuration
+    Region region = Region.US_EAST_1; // Replace with your S3 region
+    S3Client s3Client = S3Client.builder()
+            .region(region)
+            .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
+            .build();
 
-	         s3Client.putObject(putObjectRequest, Paths.get(tempFile.getAbsolutePath()));
+    // Upload image to S3
+    try {
+        // Save the file temporarily to get an InputStream
+        File tempFile = File.createTempFile("temp", null);
+        imageFile.transferTo(tempFile);
 
-	         // Delete the temporary file
-	         tempFile.delete();
+        PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+                .bucket(bucketName)
+                .key(imageFileName)
+                .acl("public-read") // Set file to be publicly accessible
+                .build();
 
-	         // Save the image URL for reference
-	         String imageUrl = "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + imageFileName;
-	         A.setImageurl(imageUrl);
+        s3Client.putObject(putObjectRequest, Paths.get(tempFile.getAbsolutePath()));
 
-	     } catch (S3Exception e) {
-	         System.err.println("Failed to upload image to S3: " + e.getMessage());
-	         return "error"; // Handle the error appropriately
-	     }
+        // Delete the temporary file
+        tempFile.delete();
 
-	     // Set art registration details
-	     A.setArtid(artid);
-	     A.setSellername(sellername);
-	     A.setSellerid(sellerid);
-	     A.setArttitle(arttitle);
-	     A.setArtdescription(artdescription);
-	     A.setArtmedium(artmedium);
-	     A.setArtdimensions(artdimensions);
-	     A.setArtcost(artcost);
-	     A.setDatelisted(datelisted);
-	     A.setAvailstatus(availstatus);
+        // Save the image URL for reference
+        String imageUrl = "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + imageFileName;
+        A.setImageurl(imageUrl);
 
-	     // Insert art and handle success/failure
-	     String result = CM.insertArt(A);
-	     if ("artsuccess".equals(result)) {
-	         response.sendRedirect("myarts");
-	         return null;
-	     } else {
-	         return result;
-	     }
-	 }
+    } catch (S3Exception e) {
+        System.err.println("Failed to upload image to S3: " + e.getMessage());
+        return "error"; // Handle the error appropriately
+    }
+
+    // Set art registration details
+    A.setArtid(artid);
+    A.setSellername(sellername);
+    A.setSellerid(sellerid);
+    A.setArttitle(arttitle);
+    A.setArtdescription(artdescription);
+    A.setArtmedium(artmedium);
+    A.setArtdimensions(artdimensions);
+    A.setArtcost(artcost);
+    A.setDatelisted(datelisted);
+    A.setAvailstatus(availstatus);
+
+    // Insert art and handle success/failure
+    String result = CM.insertArt(A);
+    if ("artsuccess".equals(result)) {
+        response.sendRedirect("myarts");
+        return null;
+    } else {
+        return result;
+    }
+}
+
 	 
 	 
 	 
